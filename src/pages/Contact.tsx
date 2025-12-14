@@ -31,19 +31,19 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: MapPin,
-      title: "Visit Us",
-      details: ["Lagos, Nigeria"],
-    },
-    {
       icon: Phone,
       title: "Call Us",
-      details: ["+234 XXX XXX XXXX", "+234 XXX XXX XXXX"],
+      details: ["+234 814 785 3995", "+234 704 692 2644"],
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@nahsalsignatures.com", "events@nahsalsignatures.com"],
+      details: ["nahsalsignaturesltd@gmail.com"],
+    },
+    {
+      icon: MapPin,
+      title: "Location",
+      details: ["Nigeria"],
     },
   ];
 
@@ -55,15 +55,15 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="gradient-primary py-16 lg:py-24">
+    <div className="min-h-screen bg-background">
+      {/* Hero Section - Clean & Simple */}
+      <section className="py-16 lg:py-20 bg-secondary/20 border-b">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center text-primary-foreground">
-            <h1 className="font-display text-4xl lg:text-5xl font-bold mb-6">
-              Get In Touch
+          <div className="max-w-3xl">
+            <h1 className="font-display text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+              Get In <span className="text-accent">Touch</span>
             </h1>
-            <p className="text-lg text-primary-foreground/90">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Let's discuss your event and create something extraordinary together
             </p>
           </div>
@@ -71,178 +71,169 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-5 gap-12">
             {/* Contact Form */}
-            <Card className="border-2 shadow-elegant">
-              <CardContent className="p-8">
-                <h2 className="font-display text-2xl font-bold mb-6">Send Us a Message</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Full Name *
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="John Doe"
-                    />
-                  </div>
+            <div className="lg:col-span-3">
+              <Card className="border bg-background">
+                <CardContent className="p-6 lg:p-8">
+                  <h2 className="font-display text-2xl font-bold mb-6 text-foreground">Send Us a Message</h2>
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
+                          Full Name *
+                        </label>
+                        <Input
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          placeholder="John Doe"
+                          className="bg-background"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">
+                          Email Address *
+                        </label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          placeholder="john@example.com"
+                          className="bg-background"
+                        />
+                      </div>
+                    </div>
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email Address *
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="john@example.com"
-                    />
-                  </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="phone" className="block text-sm font-medium mb-2 text-foreground">
+                          Phone Number
+                        </label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="+234 XXX XXX XXXX"
+                          className="bg-background"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="eventType" className="block text-sm font-medium mb-2 text-foreground">
+                          Event Type
+                        </label>
+                        <Input
+                          id="eventType"
+                          name="eventType"
+                          value={formData.eventType}
+                          onChange={handleChange}
+                          placeholder="e.g., Wedding, Corporate"
+                          className="bg-background"
+                        />
+                      </div>
+                    </div>
 
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                      Phone Number
-                    </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+234 XXX XXX XXXX"
-                    />
-                  </div>
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
+                        Message *
+                      </label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={5}
+                        placeholder="Tell us about your event..."
+                        className="bg-background"
+                      />
+                    </div>
 
-                  <div>
-                    <label htmlFor="eventType" className="block text-sm font-medium mb-2">
-                      Event Type
-                    </label>
-                    <Input
-                      id="eventType"
-                      name="eventType"
-                      value={formData.eventType}
-                      onChange={handleChange}
-                      placeholder="e.g., Wedding, Corporate Event, Birthday"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Message *
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      placeholder="Tell us about your event..."
-                    />
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full gradient-primary">
-                    Send Message <Send className="ml-2 h-5 w-5" />
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+                    <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90">
+                      Send Message <Send className="ml-2 h-5 w-5" />
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
 
             {/* Contact Information */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="font-display text-2xl font-bold mb-6">Contact Information</h2>
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <Card key={index} className="border-2">
-                      <CardContent className="p-6">
-                        <div className="flex items-start space-x-4">
-                          <div className="h-12 w-12 rounded-lg gradient-accent flex items-center justify-center flex-shrink-0">
-                            <info.icon className="h-6 w-6 text-accent-foreground" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold mb-2">{info.title}</h3>
-                            {info.details.map((detail, idx) => (
-                              <p key={idx} className="text-muted-foreground">
-                                {detail}
-                              </p>
-                            ))}
-                          </div>
+            <div className="lg:col-span-2 space-y-6">
+              <div className="space-y-4">
+                {contactInfo.map((info, index) => (
+                  <Card key={index} className="border bg-background">
+                    <CardContent className="p-5">
+                      <div className="flex items-start space-x-4">
+                        <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                          <info.icon className="h-5 w-5 text-accent" />
                         </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+                        <div>
+                          <h3 className="font-semibold mb-1 text-foreground">{info.title}</h3>
+                          {info.details.map((detail, idx) => (
+                            <p key={idx} className="text-sm text-muted-foreground">
+                              {detail}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
 
               {/* Social Media */}
-              <div>
-                <h3 className="font-display text-xl font-bold mb-4">Connect With Us</h3>
-                <div className="flex space-x-4">
+              <div className="bg-secondary/30 rounded-xl p-6">
+                <h3 className="font-display text-lg font-semibold mb-4 text-foreground">Connect With Us</h3>
+                <div className="flex space-x-3">
                   {socialMedia.map((social) => (
                     <a
                       key={social.label}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="h-12 w-12 rounded-full gradient-primary flex items-center justify-center text-primary-foreground hover:shadow-hover transition-smooth"
+                      className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/90 transition-colors"
                       aria-label={social.label}
                     >
-                      <social.icon size={20} />
+                      <social.icon size={18} />
                     </a>
                   ))}
                 </div>
                 <p className="text-sm text-muted-foreground mt-4">
-                  Follow us on social media for updates, event highlights, and inspiration
+                  Follow us for updates and event highlights
                 </p>
               </div>
 
               {/* Business Hours */}
-              <Card className="border-2 gradient-accent">
-                <CardContent className="p-6 text-accent-foreground">
-                  <h3 className="font-display text-xl font-bold mb-4">Business Hours</h3>
+              <Card className="border bg-primary text-primary-foreground">
+                <CardContent className="p-5">
+                  <h3 className="font-display text-lg font-semibold mb-4">Business Hours</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span>Monday - Friday</span>
-                      <span className="font-semibold">9:00 AM - 6:00 PM</span>
+                      <span className="text-primary-foreground/80">Monday - Friday</span>
+                      <span className="font-medium">9:00 AM - 6:00 PM</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Saturday</span>
-                      <span className="font-semibold">10:00 AM - 4:00 PM</span>
+                      <span className="text-primary-foreground/80">Saturday</span>
+                      <span className="font-medium">10:00 AM - 4:00 PM</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Sunday</span>
-                      <span className="font-semibold">By Appointment</span>
+                      <span className="text-primary-foreground/80">Sunday</span>
+                      <span className="font-medium">By Appointment</span>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Map Section - Placeholder */}
-      <section className="py-16 bg-secondary/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <Card className="border-2 shadow-elegant overflow-hidden">
-            <div className="h-[400px] bg-muted flex items-center justify-center">
-              <div className="text-center text-muted-foreground">
-                <MapPin className="h-12 w-12 mx-auto mb-4" />
-                <p className="text-lg">Map Location</p>
-                <p className="text-sm">Interactive map will be displayed here</p>
-              </div>
-            </div>
-          </Card>
         </div>
       </section>
     </div>

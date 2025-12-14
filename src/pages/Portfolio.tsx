@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Quote } from "lucide-react";
 
 const Portfolio = () => {
   const projects = [
@@ -13,58 +14,64 @@ const Portfolio = () => {
       title: "Luxury Wedding Ceremony",
       category: "Wedding",
       image: "https://images.unsplash.com/photo-1519167758481-83f29da8a6c6?q=80&w=2098",
-      description: "An elegant wedding celebration with sophisticated décor and seamless coordination",
+      description: "An elegant wedding celebration with sophisticated décor",
     },
     {
       title: "Product Launch Event",
       category: "Corporate",
       image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2012",
-      description: "High-profile product launch with interactive demonstrations and media coverage",
+      description: "High-profile product launch with interactive demonstrations",
     },
     {
       title: "Charity Fundraiser Dinner",
       category: "Social",
       image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=2069",
-      description: "Successful fundraising dinner raising significant contributions for a worthy cause",
+      description: "Successful fundraising dinner for a worthy cause",
     },
     {
       title: "Conference & Exhibition",
       category: "Corporate",
       image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070",
-      description: "Three-day international conference with exhibition halls and networking events",
-    },
-    {
-      title: "Birthday Celebration",
-      category: "Social",
-      image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=2070",
-      description: "Memorable milestone birthday celebration with personalized touches throughout",
+      description: "Three-day international conference with exhibition halls",
     },
     {
       title: "Awards Ceremony",
       category: "Corporate",
       image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070",
-      description: "Prestigious awards ceremony celebrating excellence and achievement",
-    },
-    {
-      title: "Graduation Ceremony",
-      category: "Educational",
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070",
-      description: "Large-scale graduation ceremony with flawless logistics and guest management",
+      description: "Prestigious awards ceremony celebrating excellence",
     },
   ];
 
-  const categories = ["All", "Corporate", "Wedding", "Social", "Educational"];
+  const testimonials = [
+    {
+      quote: "Nahsal Signatures transformed our corporate gala into an unforgettable experience. Their attention to detail exceeded our expectations.",
+      author: "Sarah Johnson",
+      position: "CEO, Tech Corporation",
+    },
+    {
+      quote: "From planning to execution, everything was perfect. Our wedding day was magical, and we couldn't have done it without their expertise.",
+      author: "Michael & Jessica",
+      position: "Wedding Clients",
+    },
+    {
+      quote: "Outstanding service! They managed our product launch flawlessly, ensuring every aspect aligned with our brand vision.",
+      author: "David Chen",
+      position: "Marketing Director",
+    },
+  ];
+
+  const categories = ["All", "Corporate", "Wedding", "Social"];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="gradient-primary py-16 lg:py-24">
+    <div className="min-h-screen bg-background">
+      {/* Hero Section - Clean & Simple */}
+      <section className="py-16 lg:py-20 bg-secondary/20 border-b">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center text-primary-foreground">
-            <h1 className="font-display text-4xl lg:text-5xl font-bold mb-6">
-              Our Portfolio
+          <div className="max-w-3xl">
+            <h1 className="font-display text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+              Our <span className="text-accent">Portfolio</span>
             </h1>
-            <p className="text-lg text-primary-foreground/90">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Showcasing our dedication to excellence through memorable events and satisfied clients
             </p>
           </div>
@@ -72,10 +79,10 @@ const Portfolio = () => {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          {/* Category Filter - Placeholder for future functionality */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {/* Category Filter */}
+          <div className="flex flex-wrap gap-2 mb-10">
             {categories.map((category) => (
               <Badge
                 key={category}
@@ -88,26 +95,23 @@ const Portfolio = () => {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-              <Card
-                key={index}
-                className="group overflow-hidden border-2 hover:border-accent transition-smooth shadow-elegant hover:shadow-hover"
-              >
+              <Card key={index} className="group overflow-hidden border hover:border-accent/50 transition-all duration-300 hover:shadow-md bg-background">
                 <div className="relative overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-64 object-cover transition-smooth group-hover:scale-110"
+                    className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-accent text-accent-foreground">
+                  <div className="absolute top-3 right-3">
+                    <Badge className="bg-accent/90 text-accent-foreground text-xs">
                       {project.category}
                     </Badge>
                   </div>
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="font-display text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
+                <CardContent className="p-5">
+                  <h3 className="font-display text-lg font-semibold mb-2 text-foreground group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-sm text-muted-foreground">{project.description}</p>
@@ -119,10 +123,10 @@ const Portfolio = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 lg:py-24 bg-secondary/30">
+      <section className="py-16 lg:py-20 bg-secondary/20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-foreground">
               What Our Clients Say
             </h2>
             <p className="text-muted-foreground">
@@ -130,30 +134,17 @@ const Portfolio = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "Nahsal Signatures transformed our corporate gala into an unforgettable experience. Their attention to detail and professionalism exceeded our expectations.",
-                author: "Sarah Johnson",
-                position: "CEO, Tech Corporation",
-              },
-              {
-                quote: "From planning to execution, everything was perfect. Our wedding day was magical, and we couldn't have done it without their expertise.",
-                author: "Michael & Jessica",
-                position: "Wedding Clients",
-              },
-              {
-                quote: "Outstanding service! They managed our product launch flawlessly, ensuring every aspect aligned with our brand vision. Highly recommended!",
-                author: "David Chen",
-                position: "Marketing Director",
-              },
-            ].map((testimonial, index) => (
-              <Card key={index} className="border-2 shadow-elegant">
+          <div className="grid md:grid-cols-3 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="border bg-background">
                 <CardContent className="p-6">
-                  <p className="text-muted-foreground mb-4 italic">"{testimonial.quote}"</p>
+                  <Quote className="h-8 w-8 text-accent/30 mb-4" />
+                  <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
+                    {testimonial.quote}
+                  </p>
                   <div className="border-t pt-4">
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.position}</p>
+                    <p className="font-semibold text-foreground">{testimonial.author}</p>
+                    <p className="text-xs text-muted-foreground">{testimonial.position}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -163,7 +154,7 @@ const Portfolio = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div>
