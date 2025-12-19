@@ -1,93 +1,94 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Calendar, Users, Sparkles, CheckCircle2, ArrowRight, Star, Play } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 
 const Home = () => {
   const services = [
     {
-      icon: Calendar,
       title: "Event Planning",
-      description: "Comprehensive planning services from concept development to flawless execution.",
+      description: "From concept to execution, we handle every detail of your event with precision.",
     },
     {
-      icon: Users,
       title: "Ushering & Protocol",
       description: "Professional ushers and VIP handling for exceptional guest experiences.",
     },
     {
-      icon: Sparkles,
       title: "Full Management",
-      description: "End-to-end event execution with logistics, staffing, and coordination.",
+      description: "Complete end-to-end event execution with logistics and coordination.",
     },
   ];
 
   const stats = [
-    { value: "500+", label: "Events Managed" },
-    { value: "98%", label: "Client Satisfaction" },
+    { value: "500+", label: "Events" },
+    { value: "98%", label: "Satisfaction" },
     { value: "50+", label: "Team Members" },
-    { value: "10+", label: "Years Experience" },
+    { value: "10+", label: "Years" },
   ];
 
   const benefits = [
-    "Proven experience in event management",
-    "Professional and dedicated team",
-    "Attention to detail and flawless execution",
-    "Flexible service tailored to your needs",
-    "Competitive pricing without compromise",
-    "Trusted by corporates and individuals",
+    "Proven expertise in event management",
+    "Dedicated professional team",
+    "Flawless attention to detail",
+    "Flexible, tailored solutions",
+    "Competitive pricing",
+    "Trusted by top organizations",
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section - Clean & Simple */}
-      <section className="relative py-16 lg:py-24 bg-secondary/20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">
-                <Star className="h-4 w-4" />
-                RC 0011010 - Trusted Event Partner
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center pt-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-background to-background" />
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="max-w-xl">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-8">
+                <Sparkles className="h-4 w-4" />
+                Trusted Event Partner · RC 0011010
               </div>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                Creating <span className="text-accent">Lasting</span> Impressions
+              
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground leading-[1.1] mb-6">
+                Crafting
+                <span className="italic"> unforgettable</span> experiences
               </h1>
-              <p className="text-lg text-muted-foreground max-w-xl">
-                Professional event management services from planning to execution. 
-                We transform your vision into unforgettable experiences.
+              
+              <p className="text-lg text-muted-foreground leading-relaxed mb-10">
+                We transform your vision into extraordinary events. From intimate gatherings 
+                to grand celebrations, we deliver excellence at every step.
               </p>
+              
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                <Button asChild size="lg" className="rounded-full px-8 font-medium h-14 text-base">
                   <Link to="/contact">
-                    Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                    Start Your Event
+                    <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-2">
-                  <Link to="/portfolio">
-                    <Play className="mr-2 h-4 w-4" /> View Our Work
-                  </Link>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-8 font-medium h-14 text-base">
+                  <Link to="/portfolio">View Our Work</Link>
                 </Button>
               </div>
             </div>
             
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-elegant">
+            <div className="relative hidden lg:block">
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-floating">
                 <img
                   src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069"
-                  alt="Professional event setup"
-                  className="w-full h-[400px] lg:h-[500px] object-cover"
+                  alt="Elegant event setup"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
               </div>
-              {/* Floating Stats Card */}
-              <div className="absolute -bottom-6 -left-6 bg-background p-4 rounded-xl shadow-elegant border">
-                <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 rounded-full bg-accent/10 flex items-center justify-center">
-                    <Users className="h-6 w-6 text-accent" />
+              
+              {/* Floating card */}
+              <div className="absolute -left-8 bottom-24 bg-background rounded-2xl p-6 shadow-floating border">
+                <div className="flex items-center gap-4">
+                  <div className="h-14 w-14 rounded-full bg-accent/10 flex items-center justify-center">
+                    <span className="text-2xl font-display font-bold text-accent">1M+</span>
                   </div>
                   <div>
-                    <div className="font-bold text-2xl text-foreground">1M+</div>
-                    <div className="text-sm text-muted-foreground">Guests Served</div>
+                    <div className="font-semibold text-foreground">Guests Served</div>
+                    <div className="text-sm text-muted-foreground">Across all events</div>
                   </div>
                 </div>
               </div>
@@ -96,16 +97,16 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="py-12 border-y bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Stats Section */}
+      <section className="py-20 border-y bg-background">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="font-display text-3xl lg:text-4xl font-bold text-primary mb-1">
+                <div className="font-display text-4xl lg:text-5xl font-normal text-foreground mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -113,35 +114,35 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 lg:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-foreground">
-              Our Services
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-6">
+              What we do<span className="italic"> best</span>
             </h2>
-            <p className="text-muted-foreground">
-              Comprehensive event management solutions tailored to your unique needs
+            <p className="text-muted-foreground text-lg">
+              Comprehensive event solutions tailored to create memorable experiences
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="border hover:border-accent/50 transition-all duration-300 hover:shadow-md group bg-background">
-                <CardContent className="p-6">
-                  <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                    <service.icon className="h-6 w-6 text-accent" />
-                  </div>
-                  <h3 className="font-display text-xl font-semibold mb-3 text-foreground">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
-                </CardContent>
-              </Card>
+              <div 
+                key={index} 
+                className="group p-8 rounded-2xl bg-secondary/50 hover:bg-secondary transition-base"
+              >
+                <div className="text-sm text-muted-foreground mb-4 font-medium">0{index + 1}</div>
+                <h3 className="font-display text-2xl text-foreground mb-4">{service.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+              </div>
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <Button asChild variant="outline" className="border-2">
+          <div className="mt-12 text-center">
+            <Button asChild variant="outline" className="rounded-full px-8 font-medium">
               <Link to="/services">
-                Explore All Services <ArrowRight className="ml-2 h-4 w-4" />
+                Explore All Services
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
@@ -149,54 +150,63 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 lg:py-20 bg-secondary/20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-24 lg:py-32 bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold mb-6 text-foreground">
-                Why Choose Nahsal Signatures?
+              <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-8">
+                Why choose <span className="italic">Nahsal Signatures?</span>
               </h2>
-              <p className="text-muted-foreground mb-8">
-                We bring expertise, creativity, and dedication to every event we manage. 
+              <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+                We bring expertise, creativity, and dedication to every event. 
                 Our team ensures your special moments become lasting memories.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0" />
-                    <span className="text-sm text-foreground/90">{benefit}</span>
+                  <div key={index} className="flex items-center gap-3">
+                    <div className="h-6 w-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                      <Check className="h-3.5 w-3.5 text-accent" />
+                    </div>
+                    <span className="text-foreground">{benefit}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2012"
-                alt="Professional event setup"
-                className="rounded-2xl shadow-elegant w-full h-[400px] object-cover"
-              />
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-floating">
+                <img
+                  src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2012"
+                  alt="Professional event team"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="bg-primary rounded-2xl p-8 lg:p-12 text-center">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-primary-foreground">
-              Ready to Create Something Amazing?
-            </h2>
-            <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-              Let's discuss your event and how we can make it extraordinary. 
-              Contact us today for a free consultation.
-            </p>
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Link to="/contact">
-                Schedule Consultation <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="relative rounded-3xl bg-primary overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_hsl(217_91%_60%_/_0.15),_transparent_50%)]" />
+            <div className="relative px-8 py-16 lg:px-16 lg:py-24 text-center">
+              <h2 className="font-display text-4xl lg:text-5xl text-primary-foreground mb-6">
+                Ready to create something <span className="italic">amazing?</span>
+              </h2>
+              <p className="text-primary-foreground/80 text-lg mb-10 max-w-2xl mx-auto">
+                Let's discuss your event and bring your vision to life. 
+                Schedule a free consultation today.
+              </p>
+              <Button asChild size="lg" className="rounded-full px-10 font-medium h-14 text-base bg-accent hover:bg-accent/90">
+                <Link to="/contact">
+                  Start Planning
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

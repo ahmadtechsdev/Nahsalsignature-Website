@@ -1,174 +1,149 @@
-import { Target, Eye, Heart, Award, Shield, Lightbulb, Users, CheckCircle2 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Target, Eye, Check } from "lucide-react";
 
 const About = () => {
   const values = [
-    {
-      icon: Heart,
-      title: "Excellence",
-      description: "We aim for perfection in every detail.",
-    },
-    {
-      icon: Shield,
-      title: "Integrity",
-      description: "Transparency and honesty guide us.",
-    },
-    {
-      icon: Lightbulb,
-      title: "Creativity",
-      description: "Fresh ideas for unique concepts.",
-    },
-    {
-      icon: Award,
-      title: "Reliability",
-      description: "On time and on budget delivery.",
-    },
-    {
-      icon: Users,
-      title: "Customer Focus",
-      description: "Your success is our priority.",
-    },
+    { title: "Excellence", description: "We aim for perfection in every detail." },
+    { title: "Integrity", description: "Transparency and honesty guide us." },
+    { title: "Creativity", description: "Fresh ideas for unique concepts." },
+    { title: "Reliability", description: "On time and on budget delivery." },
+    { title: "Customer Focus", description: "Your success is our priority." },
   ];
 
   const approach = [
-    { step: "01", title: "Consultation", description: "Understanding client objectives and expectations" },
+    { step: "01", title: "Consultation", description: "Understanding your objectives and expectations" },
     { step: "02", title: "Planning", description: "Developing a comprehensive event strategy" },
     { step: "03", title: "Execution", description: "Professional coordination and real-time management" },
-    { step: "04", title: "Delivery", description: "Seamless event experience and client satisfaction" },
-    { step: "05", title: "Evaluation", description: "Post-event review for continuous improvement" },
+    { step: "04", title: "Delivery", description: "Seamless event experience and satisfaction" },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section - Clean & Simple */}
-      <section className="py-16 lg:py-20 bg-secondary/20 border-b">
-        <div className="container mx-auto px-4 lg:px-8">
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-b from-secondary/50 to-background">
+        <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="font-display text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-              About <span className="text-accent">Nahsal Signatures</span>
+            <h1 className="font-display text-5xl lg:text-6xl text-foreground mb-6">
+              About <span className="italic">Nahsal Signatures</span>
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Your trusted partner in creating memorable events that leave lasting impressions. 
-              We are a professional event-focused general contracting company committed to 
-              delivering seamless, creative, and well-coordinated event solutions.
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              A professional event-focused company committed to delivering seamless, 
+              creative, and well-coordinated event solutions.
             </p>
           </div>
         </div>
       </section>
 
       {/* Company Overview */}
-      <section className="py-16 lg:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-8">
                 RC 0011010
               </div>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold mb-6 text-foreground">Company Overview</h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-8">
+                Transforming ideas into <span className="italic">memorable</span> experiences
+              </h2>
+              <div className="space-y-6 text-muted-foreground leading-relaxed">
                 <p>
-                  Nahsal Signatures Ltd is a professional event-focused general contracting company 
-                  committed to delivering seamless, creative, and well-coordinated event solutions.
+                  Nahsal Signatures Ltd specializes in planning, coordinating, and executing 
+                  events of various scales while providing reliable event support services 
+                  and materials.
                 </p>
                 <p>
-                  We specialize in planning, coordinating, and executing events of various scales 
-                  while providing reliable event support services and materials. Our brand is built 
-                  on excellence, precision, creativity, and customer satisfaction.
-                </p>
-                <p>
-                  We pride ourselves on transforming ideas into memorable experiences by combining 
-                  strategic planning, professional coordination, and high-quality event resources.
+                  Our brand is built on excellence, precision, creativity, and customer 
+                  satisfaction. We combine strategic planning, professional coordination, 
+                  and high-quality event resources to deliver exceptional results.
                 </p>
               </div>
             </div>
 
             <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070"
-                alt="Professional team planning event"
-                className="rounded-2xl shadow-elegant w-full h-[400px] object-cover"
-              />
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-floating">
+                <img
+                  src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070"
+                  alt="Professional team planning event"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 lg:py-20 bg-secondary/20">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-24 lg:py-32 bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border bg-background">
-              <CardContent className="p-8">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Eye className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-display text-2xl font-bold mb-4 text-foreground">Our Vision</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  To become a leading and trusted event contracting and management brand 
-                  recognized for innovation, reliability, and excellence across Nigeria and beyond.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="bg-background rounded-3xl p-10 lg:p-12 shadow-soft">
+              <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8">
+                <Eye className="h-7 w-7 text-primary" />
+              </div>
+              <h3 className="font-display text-3xl text-foreground mb-6">Our Vision</h3>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                To become a leading and trusted event contracting and management brand 
+                recognized for innovation, reliability, and excellence across Nigeria and beyond.
+              </p>
+            </div>
 
-            <Card className="border bg-background">
-              <CardContent className="p-8">
-                <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                  <Target className="h-6 w-6 text-accent" />
-                </div>
-                <h3 className="font-display text-2xl font-bold mb-4 text-foreground">Our Mission</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  To consistently deliver exceptional event solutions by providing professional 
-                  planning, coordination, management, and supply services that exceed client 
-                  expectations while maintaining the highest standards of integrity and quality.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="bg-background rounded-3xl p-10 lg:p-12 shadow-soft">
+              <div className="h-14 w-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-8">
+                <Target className="h-7 w-7 text-accent" />
+              </div>
+              <h3 className="font-display text-3xl text-foreground mb-6">Our Mission</h3>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                To consistently deliver exceptional event solutions by providing professional 
+                planning, coordination, and management services that exceed client expectations.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Core Values */}
-      <section className="py-16 lg:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-foreground">Our Core Values</h2>
-            <p className="text-muted-foreground">
-              The principles that guide every decision we make and every event we create
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-6">
+              Our core <span className="italic">values</span>
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              The principles that guide every decision we make
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {values.map((value, index) => (
-              <Card key={index} className="border hover:border-accent/50 transition-colors group bg-background">
-                <CardContent className="p-5 text-center">
-                  <div className="h-12 w-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-accent/20 transition-colors">
-                    <value.icon className="h-6 w-6 text-accent" />
-                  </div>
-                  <h3 className="font-display text-base font-semibold mb-1 text-foreground">{value.title}</h3>
-                  <p className="text-xs text-muted-foreground">{value.description}</p>
-                </CardContent>
-              </Card>
+              <div 
+                key={index} 
+                className="p-6 rounded-2xl bg-secondary/50 hover:bg-secondary transition-base"
+              >
+                <h3 className="font-display text-xl text-foreground mb-2">{value.title}</h3>
+                <p className="text-sm text-muted-foreground">{value.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Our Approach */}
-      <section className="py-16 lg:py-20 bg-secondary/20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-foreground">Our Approach</h2>
-            <p className="text-muted-foreground">
-              We adopt a structured and collaborative approach to deliver excellence
+      <section className="py-24 lg:py-32 bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-6">
+              Our <span className="italic">approach</span>
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              A structured and collaborative process to deliver excellence
             </p>
           </div>
 
-          <div className="grid md:grid-cols-5 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {approach.map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="font-display text-4xl font-bold text-accent/20 mb-2">{item.step}</div>
-                <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+              <div key={index} className="relative">
+                <div className="font-display text-7xl text-accent/10 mb-4">{item.step}</div>
+                <h3 className="font-display text-2xl text-foreground mb-3">{item.title}</h3>
+                <p className="text-muted-foreground">{item.description}</p>
               </div>
             ))}
           </div>
@@ -176,44 +151,45 @@ const About = () => {
       </section>
 
       {/* Quality Assurance */}
-      <section className="py-16 lg:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold mb-6 text-foreground">
-                Health, Safety & Quality Assurance
+              <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-8">
+                Health, Safety & <span className="italic">Quality</span>
               </h2>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                We adhere to strict safety, quality, and operational standards to ensure 
-                the highest level of service delivery for every event.
+              <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+                We adhere to strict safety, quality, and operational standards 
+                to ensure the highest level of service delivery for every event.
               </p>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {[
                   "Safe event environments",
                   "Proper crowd management",
-                  "Compliance with regulatory requirements",
+                  "Regulatory compliance",
                   "Consistent service quality",
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0" />
-                    <span className="text-foreground/90">{item}</span>
+                    <div className="h-6 w-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                      <Check className="h-3.5 w-3.5 text-accent" />
+                    </div>
+                    <span className="text-foreground">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-4 text-center">
-              <div className="bg-secondary/30 rounded-xl p-6">
-                <div className="text-3xl font-bold text-primary mb-1">50+</div>
-                <div className="text-sm text-muted-foreground">Team Members</div>
-              </div>
-              <div className="bg-secondary/30 rounded-xl p-6">
-                <div className="text-3xl font-bold text-primary mb-1">15+</div>
-                <div className="text-sm text-muted-foreground">Specializations</div>
-              </div>
-              <div className="bg-secondary/30 rounded-xl p-6">
-                <div className="text-3xl font-bold text-primary mb-1">10+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
-              </div>
+            
+            <div className="grid grid-cols-3 gap-4">
+              {[
+                { value: "50+", label: "Team Members" },
+                { value: "15+", label: "Specializations" },
+                { value: "10+", label: "Years" },
+              ].map((stat, index) => (
+                <div key={index} className="bg-secondary/50 rounded-2xl p-6 text-center">
+                  <div className="font-display text-3xl text-foreground mb-1">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

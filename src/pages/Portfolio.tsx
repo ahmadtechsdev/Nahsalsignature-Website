@@ -1,8 +1,9 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
 import { Quote } from "lucide-react";
 
 const Portfolio = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
+
   const projects = [
     {
       title: "Corporate Annual Gala",
@@ -62,117 +63,119 @@ const Portfolio = () => {
 
   const categories = ["All", "Corporate", "Wedding", "Social"];
 
+  const filteredProjects = activeFilter === "All" 
+    ? projects 
+    : projects.filter(p => p.category === activeFilter);
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section - Clean & Simple */}
-      <section className="py-16 lg:py-20 bg-secondary/20 border-b">
-        <div className="container mx-auto px-4 lg:px-8">
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-b from-secondary/50 to-background">
+        <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="font-display text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-              Our <span className="text-accent">Portfolio</span>
+            <h1 className="font-display text-5xl lg:text-6xl text-foreground mb-6">
+              Our <span className="italic">Portfolio</span>
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Showcasing our dedication to excellence through memorable events and satisfied clients
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Showcasing our dedication to excellence through memorable events 
+              and satisfied clients
             </p>
           </div>
         </div>
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-16 lg:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-2 mb-10">
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-6 lg:px-8">
+          {/* Filter */}
+          <div className="flex flex-wrap gap-2 mb-12">
             {categories.map((category) => (
-              <Badge
+              <button
                 key={category}
-                variant={category === "All" ? "default" : "outline"}
-                className="px-4 py-2 cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors"
+                onClick={() => setActiveFilter(category)}
+                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-base ${
+                  activeFilter === category
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
               >
                 {category}
-              </Badge>
+              </button>
             ))}
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <Card key={index} className="group overflow-hidden border hover:border-accent/50 transition-all duration-300 hover:shadow-md bg-background">
-                <div className="relative overflow-hidden">
+          {/* Projects */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project, index) => (
+              <div key={index} className="group">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute top-3 right-3">
-                    <Badge className="bg-accent/90 text-accent-foreground text-xs">
+                  <div className="absolute top-4 right-4">
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-background/90 text-foreground">
                       {project.category}
-                    </Badge>
+                    </span>
                   </div>
                 </div>
-                <CardContent className="p-5">
-                  <h3 className="font-display text-lg font-semibold mb-2 text-foreground group-hover:text-accent transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{project.description}</p>
-                </CardContent>
-              </Card>
+                <h3 className="font-display text-xl text-foreground mb-2 group-hover:text-accent transition-base">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground text-sm">{project.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 lg:py-20 bg-secondary/20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4 text-foreground">
-              What Our Clients Say
+      {/* Testimonials */}
+      <section className="py-24 lg:py-32 bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-6">
+              What our clients <span className="italic">say</span>
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-lg">
               Hear from those who have experienced our exceptional service
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border bg-background">
-                <CardContent className="p-6">
-                  <Quote className="h-8 w-8 text-accent/30 mb-4" />
-                  <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-                    {testimonial.quote}
-                  </p>
-                  <div className="border-t pt-4">
-                    <p className="font-semibold text-foreground">{testimonial.author}</p>
-                    <p className="text-xs text-muted-foreground">{testimonial.position}</p>
-                  </div>
-                </CardContent>
-              </Card>
+              <div key={index} className="bg-background rounded-3xl p-8 shadow-soft">
+                <Quote className="h-10 w-10 text-accent/20 mb-6" />
+                <p className="text-foreground mb-8 leading-relaxed">
+                  "{testimonial.quote}"
+                </p>
+                <div className="pt-6 border-t border-border">
+                  <p className="font-semibold text-foreground">{testimonial.author}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.position}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 lg:py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="font-display text-4xl lg:text-5xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground">Events Completed</div>
-            </div>
-            <div>
-              <div className="font-display text-4xl lg:text-5xl font-bold text-primary mb-2">98%</div>
-              <div className="text-muted-foreground">Client Satisfaction</div>
-            </div>
-            <div>
-              <div className="font-display text-4xl lg:text-5xl font-bold text-primary mb-2">1000+</div>
-              <div className="text-muted-foreground">Happy Clients</div>
-            </div>
-            <div>
-              <div className="font-display text-4xl lg:text-5xl font-bold text-primary mb-2">50+</div>
-              <div className="text-muted-foreground">Team Members</div>
-            </div>
+      {/* Stats */}
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {[
+              { value: "500+", label: "Events Completed" },
+              { value: "98%", label: "Client Satisfaction" },
+              { value: "1000+", label: "Happy Clients" },
+              { value: "50+", label: "Team Members" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="font-display text-5xl lg:text-6xl text-foreground mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
