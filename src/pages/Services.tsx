@@ -1,7 +1,7 @@
 import { 
   Calendar, Users, Briefcase, ArrowRight, Package, Truck,
   Building, Heart, PartyPopper, Music, Award, Target, 
-  GraduationCap, Mic, Globe, Trophy
+  GraduationCap, Mic, Globe, Trophy, Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -84,15 +84,29 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-b from-secondary/50 to-background">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32">
+        {/* Background */}
+        <div className="absolute inset-0 gradient-hero" />
+        <div className="absolute inset-0 gradient-mesh" />
+        <div className="absolute inset-0 bg-grid opacity-30" />
+        
+        {/* Decorative blobs */}
+        <div className="absolute top-1/3 -right-32 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -left-32 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-6 relative">
           <div className="max-w-3xl">
-            <h1 className="font-display text-5xl lg:text-6xl text-foreground mb-6">
-              Our <span className="italic">Services</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-body-sm font-medium mb-8 animate-fade-up">
+              <Sparkles className="h-4 w-4" />
+              <span>Our Services</span>
+            </div>
+            <h1 className="font-display text-display-lg lg:text-display-xl text-foreground mb-6 animate-fade-up stagger-1">
+              Our
+              <span className="text-gradient"> Services</span>
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-body-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl animate-fade-up stagger-2">
               Comprehensive event management solutions tailored to transform 
               your ideas into memorable experiences.
             </p>
@@ -101,31 +115,32 @@ const Services = () => {
       </section>
 
       {/* Main Services */}
-      <section className="py-24 lg:py-32 bg-background">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8">
+      <section className="py-24 lg:py-32 relative">
+        <div className="absolute inset-0 gradient-mesh opacity-30" />
+        <div className="container mx-auto px-6 relative">
+          <div className="grid lg:grid-cols-2 gap-6">
             {mainServices.map((service, index) => (
               <div 
                 key={service.id} 
                 id={service.id}
-                className={`p-8 lg:p-10 rounded-3xl bg-secondary/50 hover:bg-secondary transition-base ${
+                className={`group card-premium p-8 lg:p-10 hover-lift ${
                   index === mainServices.length - 1 && mainServices.length % 2 !== 0 
-                    ? 'lg:col-span-2 lg:max-w-[calc(50%-1rem)]' 
+                    ? 'lg:col-span-2 lg:max-w-[calc(50%-0.75rem)]' 
                     : ''
                 }`}
               >
-                <div className="flex items-start gap-6">
-                  <div className="h-14 w-14 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <service.icon className="h-7 w-7 text-accent" />
+                <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+                  <div className="h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/25">
+                    <service.icon className="h-7 w-7 text-primary transition-colors duration-300 group-hover:text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-display text-2xl text-foreground mb-4">
+                    <h3 className="font-display text-heading-lg text-foreground mb-5">
                       {service.title}
                     </h3>
                     <ul className="space-y-3">
                       {service.details.map((detail, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-muted-foreground">
-                          <ArrowRight className="h-4 w-4 text-accent flex-shrink-0 mt-1" />
+                          <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                           <span>{detail}</span>
                         </li>
                       ))}
@@ -139,13 +154,16 @@ const Services = () => {
       </section>
 
       {/* Events We Manage */}
-      <section className="py-24 lg:py-32 bg-secondary/30">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-mesh opacity-50" />
+        <div className="container mx-auto px-6 relative">
           <div className="max-w-2xl mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-6">
-              Events we <span className="italic">manage</span>
+            <p className="text-body-sm font-semibold text-primary uppercase tracking-wider mb-4">Event Types</p>
+            <h2 className="font-display text-display-sm lg:text-display-md text-foreground mb-6">
+              Events we
+              <span className="text-gradient"> manage</span>
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-body-lg">
               From intimate gatherings to grand celebrations, we handle it all
             </p>
           </div>
@@ -154,35 +172,37 @@ const Services = () => {
             {eventTypes.map((type, index) => (
               <div 
                 key={index} 
-                className="bg-background rounded-2xl p-6 text-center hover:shadow-soft transition-base group"
+                className="group card-premium p-6 text-center hover-lift cursor-pointer"
               >
-                <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-base">
-                  <type.icon className="h-6 w-6 text-accent" />
+                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/25">
+                  <type.icon className="h-6 w-6 text-primary transition-colors duration-300 group-hover:text-white" />
                 </div>
-                <span className="text-sm font-medium text-foreground">{type.title}</span>
+                <span className="text-body-sm font-semibold text-foreground">{type.title}</span>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-muted-foreground mt-10">
+          <p className="text-center text-muted-foreground mt-10 text-body-md">
             Plus: Community events, religious gatherings, government functions, catering, and more.
           </p>
         </div>
       </section>
 
       {/* Industries */}
-      <section className="py-24 lg:py-32 bg-background">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-24 lg:py-32 relative">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             <div>
-              <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-8">
-                Industries we <span className="italic">serve</span>
+              <p className="text-body-sm font-semibold text-primary uppercase tracking-wider mb-4">Industries</p>
+              <h2 className="font-display text-display-sm lg:text-display-md text-foreground mb-8">
+                Industries we
+                <span className="text-gradient"> serve</span>
               </h2>
-              <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+              <p className="text-muted-foreground text-body-lg mb-10 leading-relaxed">
                 Our expertise spans across multiple industries, providing tailored 
                 event solutions that meet unique sector requirements.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   "Corporate & Business",
                   "Social & Private",
@@ -191,43 +211,56 @@ const Services = () => {
                   "Entertainment & Media",
                   "Educational Sector",
                 ].map((industry, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="h-2 w-2 rounded-full bg-accent" />
-                    <span className="text-foreground">{industry}</span>
+                  <div key={index} className="flex items-center gap-3 group">
+                    <div className="h-2 w-2 rounded-full gradient-primary transition-all duration-300 group-hover:w-4" />
+                    <span className="text-foreground font-medium">{industry}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-floating">
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <img
                   src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=2070"
                   alt="Industry events"
                   className="w-full h-full object-cover"
                 />
               </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-3xl border-2 border-primary/20 -z-10" />
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-3xl bg-accent/10 -z-10" />
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 lg:py-32 bg-secondary/30">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="relative rounded-3xl bg-primary overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_hsl(217_91%_60%_/_0.15),_transparent_50%)]" />
-            <div className="relative px-8 py-16 lg:px-16 lg:py-24 text-center">
-              <h2 className="font-display text-4xl lg:text-5xl text-primary-foreground mb-6">
-                Ready to plan your <span className="italic">event?</span>
+      <section className="py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="relative rounded-[2rem] overflow-hidden">
+            {/* Background */}
+            <div className="absolute inset-0 gradient-primary" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsla(262,83%,70%,0.3),_transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsla(239,84%,75%,0.2),_transparent_50%)]" />
+            <div className="absolute inset-0 bg-grid opacity-10" />
+            
+            <div className="relative px-8 py-20 lg:px-20 lg:py-28 text-center">
+              <h2 className="font-display text-display-sm lg:text-display-md text-white mb-6 max-w-3xl mx-auto">
+                Ready to plan your
+                <span className="text-primary-lighter"> event?</span>
               </h2>
-              <p className="text-primary-foreground/80 text-lg mb-10 max-w-2xl mx-auto">
+              <p className="text-white/70 text-body-lg mb-10 max-w-2xl mx-auto">
                 Let's discuss your requirements and create a customized solution 
                 that exceeds your expectations.
               </p>
-              <Button asChild size="lg" className="rounded-full px-10 font-medium h-14 text-base bg-accent hover:bg-accent/90">
-                <Link to="/contact">
+              <Button 
+                asChild 
+                size="lg" 
+                className="rounded-full px-10 font-semibold h-14 text-base bg-white text-primary hover:bg-white/90 shadow-xl hover:shadow-2xl transition-all duration-300 group"
+              >
+                <Link to="/contact" className="flex items-center gap-2">
                   Get a Free Quote
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </Link>
               </Button>
             </div>

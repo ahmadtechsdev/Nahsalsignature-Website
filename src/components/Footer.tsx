@@ -27,13 +27,16 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-6 lg:px-8 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+    <footer className="relative bg-foreground text-background overflow-hidden">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
+      
+      <div className="container mx-auto px-6 pt-20 pb-10 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <img src={logo} alt="Nahsal Signatures" className="h-12 w-auto brightness-0 invert mb-6" />
-            <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6">
+            <img src={logo} alt="Nahsal Signatures" className="h-10 w-auto brightness-0 invert mb-6" />
+            <p className="text-background/60 text-body-sm leading-relaxed mb-8 max-w-xs">
               Professional event management services delivering seamless, creative solutions. RC 0011010
             </p>
             <div className="flex gap-2">
@@ -43,7 +46,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-10 w-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-base"
+                  className="h-10 w-10 rounded-xl bg-background/10 flex items-center justify-center hover:bg-background/20 transition-all duration-300 hover:-translate-y-0.5"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -54,16 +57,16 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-6">Company</h3>
-            <ul className="space-y-3">
+            <h3 className="text-body-sm font-semibold uppercase tracking-wider text-background/40 mb-6">Company</h3>
+            <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-base inline-flex items-center gap-1 group"
+                    className="text-body-sm text-background/70 hover:text-background transition-colors duration-300 inline-flex items-center gap-1.5 group"
                   >
                     {link.label}
-                    <ArrowUpRight size={12} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 translate-y-0.5 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
                   </Link>
                 </li>
               ))}
@@ -72,16 +75,16 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-6">Services</h3>
-            <ul className="space-y-3">
+            <h3 className="text-body-sm font-semibold uppercase tracking-wider text-background/40 mb-6">Services</h3>
+            <ul className="space-y-4">
               {services.map((service) => (
                 <li key={service.to}>
                   <Link
                     to={service.to}
-                    className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-base inline-flex items-center gap-1 group"
+                    className="text-body-sm text-background/70 hover:text-background transition-colors duration-300 inline-flex items-center gap-1.5 group"
                   >
                     {service.label}
-                    <ArrowUpRight size={12} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                    <ArrowUpRight size={14} className="opacity-0 -translate-x-1 translate-y-0.5 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
                   </Link>
                 </li>
               ))}
@@ -90,24 +93,28 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider mb-6">Contact</h3>
-            <ul className="space-y-4">
+            <h3 className="text-body-sm font-semibold uppercase tracking-wider text-background/40 mb-6">Contact</h3>
+            <ul className="space-y-5">
               <li className="flex items-start gap-3">
-                <Phone size={16} className="text-accent mt-0.5 flex-shrink-0" />
-                <div className="text-sm text-primary-foreground/70 space-y-1">
-                  <a href="tel:+2348147853995" className="hover:text-primary-foreground transition-base block">
+                <div className="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <Phone size={16} className="text-primary-light" />
+                </div>
+                <div className="text-body-sm text-background/70 space-y-1.5">
+                  <a href="tel:+2348147853995" className="hover:text-background transition-colors duration-300 block">
                     +234 814 785 3995
                   </a>
-                  <a href="tel:+2347046922644" className="hover:text-primary-foreground transition-base block">
+                  <a href="tel:+2347046922644" className="hover:text-background transition-colors duration-300 block">
                     +234 704 692 2644
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={16} className="text-accent mt-0.5 flex-shrink-0" />
+                <div className="h-10 w-10 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
+                  <Mail size={16} className="text-accent" />
+                </div>
                 <a
                   href="mailto:nahsalsignaturesltd@gmail.com"
-                  className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-base break-all"
+                  className="text-body-sm text-background/70 hover:text-background transition-colors duration-300 break-all"
                 >
                   nahsalsignaturesltd@gmail.com
                 </a>
@@ -116,25 +123,27 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-primary-foreground/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-primary-foreground/50">
-              © {currentYear} Nahsal Signatures Ltd. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <Link
-                to="/privacy"
-                className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-base"
-              >
-                Privacy
-              </Link>
-              <Link
-                to="/terms"
-                className="text-sm text-primary-foreground/50 hover:text-primary-foreground transition-base"
-              >
-                Terms
-              </Link>
-            </div>
+        {/* Divider */}
+        <div className="h-px w-full bg-background/10 mb-8" />
+
+        {/* Bottom */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-body-sm text-background/40">
+            © {currentYear} Nahsal Signatures Ltd. All rights reserved.
+          </p>
+          <div className="flex items-center gap-8">
+            <Link
+              to="/privacy"
+              className="text-body-sm text-background/40 hover:text-background/70 transition-colors duration-300"
+            >
+              Privacy
+            </Link>
+            <Link
+              to="/terms"
+              className="text-body-sm text-background/40 hover:text-background/70 transition-colors duration-300"
+            >
+              Terms
+            </Link>
           </div>
         </div>
       </div>

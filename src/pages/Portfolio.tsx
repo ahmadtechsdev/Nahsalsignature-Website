@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Quote } from "lucide-react";
+import { Quote, Sparkles, Star } from "lucide-react";
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -68,15 +68,29 @@ const Portfolio = () => {
     : projects.filter(p => p.category === activeFilter);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-b from-secondary/50 to-background">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32">
+        {/* Background */}
+        <div className="absolute inset-0 gradient-hero" />
+        <div className="absolute inset-0 gradient-mesh" />
+        <div className="absolute inset-0 bg-grid opacity-30" />
+        
+        {/* Decorative blobs */}
+        <div className="absolute top-1/3 -right-32 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -left-32 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-6 relative">
           <div className="max-w-3xl">
-            <h1 className="font-display text-5xl lg:text-6xl text-foreground mb-6">
-              Our <span className="italic">Portfolio</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-body-sm font-medium mb-8 animate-fade-up">
+              <Sparkles className="h-4 w-4" />
+              <span>Our Work</span>
+            </div>
+            <h1 className="font-display text-display-lg lg:text-display-xl text-foreground mb-6 animate-fade-up stagger-1">
+              Our
+              <span className="text-gradient"> Portfolio</span>
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-body-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl animate-fade-up stagger-2">
               Showcasing our dedication to excellence through memorable events 
               and satisfied clients
             </p>
@@ -85,18 +99,19 @@ const Portfolio = () => {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-24 lg:py-32 bg-background">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="py-24 lg:py-32 relative">
+        <div className="absolute inset-0 gradient-mesh opacity-30" />
+        <div className="container mx-auto px-6 relative">
           {/* Filter */}
           <div className="flex flex-wrap gap-2 mb-12">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-base ${
+                className={`px-6 py-2.5 rounded-full text-body-sm font-semibold transition-all duration-300 ${
                   activeFilter === category
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                    ? "gradient-primary text-white shadow-lg shadow-primary/25"
+                    : "bg-secondary text-foreground hover:bg-secondary/80 border border-border/50"
                 }`}
               >
                 {category}
@@ -107,23 +122,24 @@ const Portfolio = () => {
           {/* Projects */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <div key={index} className="group">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4">
+              <div key={index} className="group cursor-pointer">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-5 shadow-lg transition-shadow duration-300 group-hover:shadow-2xl">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-background/90 text-foreground">
+                    <span className="px-3 py-1.5 rounded-full text-body-sm font-medium bg-background/90 text-foreground backdrop-blur-sm shadow-sm">
                       {project.category}
                     </span>
                   </div>
                 </div>
-                <h3 className="font-display text-xl text-foreground mb-2 group-hover:text-accent transition-base">
+                <h3 className="font-display text-heading-md text-foreground mb-2 transition-colors duration-300 group-hover:text-primary">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">{project.description}</p>
+                <p className="text-muted-foreground text-body-sm">{project.description}</p>
               </div>
             ))}
           </div>
@@ -131,27 +147,35 @@ const Portfolio = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 lg:py-32 bg-secondary/30">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="py-24 lg:py-32 bg-secondary/30 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-mesh opacity-50" />
+        <div className="container mx-auto px-6 relative">
           <div className="max-w-2xl mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-6">
-              What our clients <span className="italic">say</span>
+            <p className="text-body-sm font-semibold text-primary uppercase tracking-wider mb-4">Testimonials</p>
+            <h2 className="font-display text-display-sm lg:text-display-md text-foreground mb-6">
+              What our clients
+              <span className="text-gradient"> say</span>
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-body-lg">
               Hear from those who have experienced our exceptional service
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-background rounded-3xl p-8 shadow-soft">
-                <Quote className="h-10 w-10 text-accent/20 mb-6" />
-                <p className="text-foreground mb-8 leading-relaxed">
+              <div key={index} className="card-premium p-8 hover-lift">
+                <div className="flex items-center gap-1 mb-6">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <Quote className="h-10 w-10 text-primary/20 mb-4" />
+                <p className="text-foreground mb-8 leading-relaxed text-body-md">
                   "{testimonial.quote}"
                 </p>
                 <div className="pt-6 border-t border-border">
                   <p className="font-semibold text-foreground">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.position}</p>
+                  <p className="text-body-sm text-muted-foreground">{testimonial.position}</p>
                 </div>
               </div>
             ))}
@@ -160,20 +184,20 @@ const Portfolio = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-24 lg:py-32 bg-background">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <section className="py-24 lg:py-32 relative">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
             {[
               { value: "500+", label: "Events Completed" },
               { value: "98%", label: "Client Satisfaction" },
               { value: "1000+", label: "Happy Clients" },
               { value: "50+", label: "Team Members" },
             ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="font-display text-5xl lg:text-6xl text-foreground mb-2">
-                  {stat.value}
+              <div key={index} className="text-center group">
+                <div className="font-display text-display-md lg:text-display-lg text-foreground mb-2 transition-transform duration-300 group-hover:scale-105">
+                  <span className="text-gradient">{stat.value}</span>
                 </div>
-                <div className="text-muted-foreground">{stat.label}</div>
+                <div className="text-muted-foreground font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
