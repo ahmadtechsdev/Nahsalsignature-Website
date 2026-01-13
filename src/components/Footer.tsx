@@ -37,7 +37,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <img src={logo} alt="Nahsal Signatures" className="h-10 w-auto brightness-0 invert mb-6" />
             <p className="text-background/60 text-body-sm leading-relaxed mb-8 max-w-xs">
-              Professional event management services delivering seamless, creative solutions. RC 0011010
+              Professional event management services delivering seamless, creative solutions. RC 9199030
             </p>
             <div className="flex gap-2">
               {socials.map((social) => (

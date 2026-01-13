@@ -58,7 +58,7 @@ const Home = () => {
                 <Sparkles className="h-4 w-4" />
                 <span>Trusted Event Partner</span>
                 <span className="w-1 h-1 rounded-full bg-primary/40" />
-                <span className="text-muted-foreground">RC 0011010</span>
+                <span className="text-muted-foreground">RC 9199030</span>
               </div>
               
               {/* Heading */}
