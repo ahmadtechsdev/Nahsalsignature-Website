@@ -15,13 +15,45 @@ const Contact = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (isSubmitting) return; // Prevent duplicate submissions
+    setIsSubmitting(true);
+
+    const recipient = "nahsalsignaturesltd@gmail.com";
+    const subject = encodeURIComponent(`New Contact Form Submission - ${formData.eventType || 'General Inquiry'}`);
+    
+    const body = encodeURIComponent(
+`Full Name: ${formData.name}
+
+Email Address: ${formData.email}
+
+Phone Number: ${formData.phone || 'Not provided'}
+
+Event Type: ${formData.eventType || 'Not specified'}
+
+Message:
+${formData.message}`
+    );
+
+    const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+
     toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
+      title: "Email Client Opened!",
+      description: "Please click 'Send' in your email app to submit your message.",
     });
-    setFormData({ name: "", email: "", phone: "", eventType: "", message: "" });
+
+    // Reset form after a short delay
+    setTimeout(() => {
+      setFormData({ name: "", email: "", phone: "", eventType: "", message: "" });
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -175,9 +207,10 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full h-14 rounded-full font-semibold text-base gradient-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 group"
+                    disabled={isSubmitting}
+                    className="w-full h-14 rounded-full font-semibold text-base gradient-primary hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25 group disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {isSubmitting ? "Opening Email..." : "Send Message"}
                     <Send className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </Button>
                 </form>
