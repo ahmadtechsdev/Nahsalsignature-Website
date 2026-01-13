@@ -9,7 +9,7 @@ const Portfolio = () => {
       title: "Corporate Annual Gala",
       category: "Corporate",
       image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069",
-      description: "A prestigious annual gala for a leading corporation with 500+ attendees",
+      description: "A prestigious annual gala for a leading corporation",
     },
     {
       title: "Luxury Wedding Ceremony",
@@ -186,11 +186,10 @@ const Portfolio = () => {
       {/* Stats */}
       <section className="py-24 lg:py-32 relative">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-6">
             {[
-              { value: "500+", label: "Events Completed" },
               { value: "98%", label: "Client Satisfaction" },
-              { value: "1000+", label: "Happy Clients" },
+              { value: "100+", label: "Happy Clients" },
               { value: "50+", label: "Team Members" },
             ].map((stat, index) => (
               <div key={index} className="text-center group">

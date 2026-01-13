@@ -217,7 +217,7 @@ const About = () => {
               {[
                 { value: "50+", label: "Team Members" },
                 { value: "15+", label: "Specializations" },
-                { value: "10+", label: "Years" },
+                { value: "5+", label: "Years" },
               ].map((stat, index) => (
                 <div key={index} className="card-premium p-6 text-center hover-lift">
                   <div className="font-display text-display-sm text-foreground mb-1">{stat.value}</div>
