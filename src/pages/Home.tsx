@@ -22,10 +22,9 @@ const Home = () => {
   ];
 
   const stats = [
-    { value: "500+", label: "Events Delivered" },
     { value: "98%", label: "Client Satisfaction" },
     { value: "50+", label: "Team Members" },
-    { value: "10+", label: "Years Experience" },
+    { value: "5+", label: "Years Experience" },
   ];
 
   const benefits = [
@@ -112,7 +111,7 @@ const Home = () => {
                     ))}
                   </div>
                   <p className="text-body-sm text-muted-foreground mt-0.5">
-                    Trusted by 500+ clients
+                    Trusted by our clients
                   </p>
                 </div>
               </div>
