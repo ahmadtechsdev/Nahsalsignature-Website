@@ -53,7 +53,7 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/5 border border-accent/10 text-accent text-body-sm font-medium mb-8">
-                RC 0011010
+                RC 9199030
               </div>
               <h2 className="font-display text-display-sm lg:text-display-md text-foreground mb-8">
                 Transforming ideas into
